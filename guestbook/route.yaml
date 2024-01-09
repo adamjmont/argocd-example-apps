@@ -1,0 +1,16 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: guestbook
+  namespace: default
+  labels:
+    app.kubernetes.io/instance: guestbook
+spec:
+  host: guestbook.apps.ocp-platform-stg.byu.edu
+  to:
+    kind: Service
+    name: guestbook-ui
+    weight: 100
+  port:
+    targetPort: 80
+  wildcardPolicy: None
